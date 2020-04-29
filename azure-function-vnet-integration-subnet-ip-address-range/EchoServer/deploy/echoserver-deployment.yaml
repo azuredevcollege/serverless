@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: echoserver
+  labels:
+    app: echoserver
+    component: echoserverapi
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: echoserver
+      component: echoserverapi
+  template:
+    metadata:
+      labels:
+        app: echoserver
+        component: echoserverapi
+    spec:
+      containers:
+        - name: echoserverapi
+          image: m009/echoserver:0.2
+          imagePullPolicy: Always
